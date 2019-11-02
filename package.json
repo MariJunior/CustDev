@@ -21,6 +21,8 @@
     "*.json",
     "*.js",
     "source/*.html",
+    "source/pages/*.pug",
+    "source/pug/**/*.pug",
     "source/js/**/*.js",
     "source/img/**/*.svg",
     "source/less/**/*.less"
