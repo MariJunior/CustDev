@@ -64,9 +64,7 @@ function style() {
     .pipe(plumber())
     .pipe(less())
     .pipe(postcss([
-      autoprefixer({
-        browsers: ['last 3 versions']
-      })
+      autoprefixer()
     ]))
     .pipe(dest('build/css'))
     .pipe(minify())

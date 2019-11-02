@@ -1,84 +1,246 @@
 extends ../pug/layout.pug
 
 block meta
-  title НордВест - Главная
   meta(name='description', content='')
 
 block header
-  +header(pagesList, 1)
+  header.page-header
+    nav.page-header__navigation.container
+      .page-header__navigation-wrapper
+        ul.page-header__navigation-list.navigation-list.navigation-list--dropdown
+          li.navigation-list__item.navigation-list__item--caps.navigation-list__item--current
+            a.navigation-list__link Санкт-Петербург
+          li.navigation-list__item.navigation-list__item--caps
+            a.navigation-list__link(href='#') Москва
+          li.navigation-list__item.navigation-list__item--caps
+            a.navigation-list__link(href='#') Минск
+
+        ul.page-header__navigation-list.navigation-list
+          li.navigation-list__item
+            a.navigation-list__link(href='#') Программа
+          li.navigation-list__item
+            a.navigation-list__link(href='#') Отзывы
+          li.navigation-list__item
+            a.navigation-list__link(href='#') Стоимость
+          li.navigation-list__item
+            a.navigation-list__link(href='#') О преподавателе
+
+      a.page-header__navigation-entry.btn.btn--rounded.btn--white(href='#') Запись на курс
+
+      button.page-header__navigation-burger.btn-burger(type='button', aria-label='переключатель меню')
+        span.btn-burger__line
 
 block content
-  h1.visually-hidden Основные сведения о компании
-  section.intro-block
-    .intro-block__wrap
-      p.intro-block__text.intro-block__text--first «Мы на рынке уже более 7 лет
-      p.intro-block__text.intro-block__text--second своим клиентам гарантируем результат!»
+  h1.visually-hidden Сайт конференции CustDev
+  section.main-screen
+    .container
+      h2.visually-hidden Основная информация
+      .main-screen__review.sticker
+        p.sticker__text Оценка
+        p.sticker__text.sticker__text--big 9 из 10
+        p.sticker__text Иван Матвиенко
+        p.sticker__text.sticker__text--bold Wimprof
+        a.sticker__link(href='#') Читать отзыв
+      .main-screen__info
+        p.main-screen__info-where-n-when Санкт-петербург 10-21 мая
+        p.main-screen__info-what Начни делать Customer Development и проверять гипотезы
+        p.main-screen__info-how На оффлайн курсе из 5 воркшопов
+        a.main-screen__info-entry.btn.btn--rounded.btn--pulse.btn--mint(href='#') Записаться
 
-  +section-list(clientsData)
+  section.statistics
+    .container
+      h2.visually-hidden Статистика без Customer Development
+      p.statistics__lead Если вы не делаете Customer Development - вы не управляете  движением  к product-market fit
+      ul.statistics__list
+        li.statistics__list-item.card.card--background.card--shadow
+          p.card__text #[strong.card__lead.card__lead--big 94%] стартапов умирают в течение 3 лет, и главная причина этого - отсутствие  product-market fit
+        li.statistics__list-item.card.card--background.card--shadow
+          p.card__text #[strong.card__lead.card__lead--big менее 50%] тестируемых Amazon функций реально запускаются после  проверки гипотез
+        li.statistics__list-item.card.card--background.card--shadow
+          p.card__text #[strong.card__lead.card__lead--big только 50%] компаний по результатам исследования SaaS проводят многовариантные  A / B тестирования
+        li.statistics__list-item.card.card--background.card--shadow
+          p.card__text #[strong.card__lead.card__lead--big от 40 до 90%] новых продуктов не получают значительного признания на рынке, так как строятся на основе творчества, интуиции  и интеллекта
 
-  +section-list(servicesData)
+  section.whom-n-why
+    .container
+      h2.whom-n-why__title.section-title Кому и зачем знать Customer Development
+      ul.whom-n-why__list
+        li.whom-n-why__list-item.card
+          p.card__text #[strong.card__lead Продуктовому  дизайнеру] лучше узнать потребность клиента и научиться быстро проверять прототипы и макеты на пользователях чтобы исправлять ошибки и делать интерфейсы кратно качественнее
+        li.whom-n-why__list-item.card
+          p.card__text #[strong.card__lead Продакт- менеджерам] идеально знать мотивацию своих пользователей и принимать продуктовые решения быстрее и значительно качественнее
+        li.whom-n-why__list-item.card
+          p.card__text #[strong.card__lead Основателям  стартапов] запустить процесс проверки гипотез в котором вы быстрее и ЗНАЧИТЕЛЬНО дешевле найдёте product-market fit
 
-  section.certificates.gallery
-    - var certificatesNumber = 10;
-      h2.certificates__title.section-title Наши сертификаты
-      .certificates__list
-        - for (var i = 1; i <= certificatesNumber; ++ i) {
-          a.certificates__item(href='img/cert-'+i+'.jpg', data-fancybox='certificates', data-caption='Здесь может быть любая подпись к изображению')
-            img(src='img/cert-'+i+'.jpg', width='180', height='260', alt='Сертификат')
-        - }
+  section.programm
+    .container
+      h2.programm__title.section-title Что будет на курсе
+      .programm__wrapper
+        ul.programm__list
+          li.programm__list-item.card
+            p.card__text #[strong.card__lead Продуктовому  дизайнеру] лучше узнать потребность клиента и научиться быстро проверять прототипы и макеты на пользователях чтобы исправлять ошибки и делать интерфейсы кратно качественнее
+          li.programm__list-item.card
+            p.card__text #[strong.card__lead Продакт- менеджерам] идеально знать мотивацию своих пользователей и принимать продуктовые решения быстрее и значительно качественнее
+          li.programm__list-item.card
+            p.card__text #[strong.card__lead Основателям  стартапов] запустить процесс проверки гипотез в котором вы быстрее и ЗНАЧИТЕЛЬНО дешевле найдёте product-market fit
+          li.programm__list-item.card
+            p.card__text #[strong.card__lead Основателям  стартапов] запустить процесс проверки гипотез в котором вы быстрее и ЗНАЧИТЕЛЬНО дешевле найдёте product-market fit
+        .programm__additional-card.card.card--background.card--shadow.card--pulse
+          p.card__text #[strong.card__lead Начнешь, наконец,  делать custdev] про который все давно  говорят, но мало кто делает
+        a.programm__full(href='#') Смотреть программу полностью
+
+  section.result
+    .container
+      h2.result__title.section-title Результат
+      ul.result__list
+        li.result__list-item.card.card--background.card--icon(data-icon='img/icon-.png')
+          p.card__text #[strong.card__lead Продуктовому  дизайнеру] лучше узнать потребность клиента и научиться быстро проверять прототипы и макеты на пользователях чтобы исправлять ошибки и делать интерфейсы кратно качественнее
+        li.result__list-item.card.card--background.card--icon(data-icon='img/icon-.png')
+          p.card__text #[strong.card__lead Продакт- менеджерам] идеально знать мотивацию своих пользователей и принимать продуктовые решения быстрее и значительно качественнее
+        li.result__list-item.card.card--background.card--icon(data-icon='img/icon-.png')
+          p.card__text #[strong.card__lead Основателям  стартапов] запустить процесс проверки гипотез в котором вы быстрее и ЗНАЧИТЕЛЬНО дешевле найдёте product-market fit
+        li.result__list-item.card.card--background.card--icon(data-icon='img/icon-.png')
+          p.card__text #[strong.card__lead Основателям  стартапов] запустить процесс проверки гипотез в котором вы быстрее и ЗНАЧИТЕЛЬНО дешевле найдёте product-market fit
+
+  section.about
+    .container
+      h2.about__title.section-title Почему мне можно доверять
+      .about__wrapper
+        .about__video
+          iframe(src='https://www.youtube.com/embed/Y421bWMelqE', width='', height='', frameborder='0', allowfullscreen)
+        .about__main-data.card.card--background.card--shadow
+          strong.card__lead.card__lead--big Алексей Иванов
+          p.card__text Ex-Lead Product Manager
+        ul.about__list
+          li.about__list-item.card.card--icon-top(data-icon='img/icon-.png')
+            strong.card__lead Опыт в продукте
+            p.card__text Отвечал за продукт поиска по изображениям,  с помощью Customer Development  и юзабилити-исследований добились кратного роста метрик
+          li.about__list-item.card.card--icon-top(data-icon='img/icon-.png')
+            strong.card__lead Обучил CustDev`у  400+ человек
+            p.card__text 400+ человек уже прошли курс по CustDev и проверке гипотез в  рамках отдельного курса, так и в составе программы 'Руководитель digital-продукта'
+          li.about__list-item.card.card--icon-top(data-icon='img/icon-.png')
+            strong.card__lead Опыт разработки  бота
+            p.card__text Создавали с нуля конструктор ботов  для Messenger  и выводили в лидеры рынка конструкторов ботов
+          li.about__list-item.card.card--icon-top(data-icon='img/icon-.png')
+            strong.card__lead Топ-2 - оценка  лектора
+            p.card__text Урезанный курс также читал в крупных digital -школах, студенты оценили как Топ-2 преподавателя
 
   section.reviews
-    h2.reviews__title.section-title Отзывы
-    ul.reviews__list
-      li.reviews__item
-        .reviews__item-reviwer
-          img.reviews__item-photo(src='img/vasyapetr.jpg', alt='Фото Васи Петрова')
-          .reviews__item-reviwer-info
-            cite.reviews__item-name Вася Петров
-            p.reviews__item-function директор
-            p.reviews__item-company ООО “Где деньги, Зин?”
-        blockquote.reviews__item-text
-          | Повседневная практика показывает, что консультация с широким активом способствует подготовки и реализации соответствующий условий активизации.
-          | Таким образом реализация намеченных плановых заданий играет важную роль в формировании направлений прогрессивного развития.
-          | Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности представляет собой интересный эксперимент проверки новых предложений.
-          | Не следует, однако забывать, что дальнейшее развитие различных форм деятельности обеспечивает широкому кругу (специалистов) участие в формировании дальнейших направлений развития.
-      li.reviews__item
-        .reviews__item-reviwer
-          img.reviews__item-photo(src='img/zinasobstv.jpg', alt='Фото Зины Собственно')
-          .reviews__item-reviwer-info
-            cite.reviews__item-name Зина Собственно
-            p.reviews__item-function директор
-            p.reviews__item-company ООО “Не знаю, Вася”
-        blockquote.reviews__item-text
-          | С другой стороны постоянное информационно-пропагандистское обеспечение нашей деятельности обеспечивает широкому кругу (специалистов) участие в формировании форм развития.
-          | Таким образом консультация с широким активом позволяет выполнять важные задания по разработке соответствующий условий активизации.
-          | Таким образом новая модель организационной деятельности позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач.
-          | Не следует, однако забывать, что консультация с широким активом играет важную роль в формировании соответствующий условий активизации.
-      li.reviews__item
-        .reviews__item-reviwer
-          img.reviews__item-photo(src='img/vassazhel.jpg', alt='Фото Вассы Железновы')
-          .reviews__item-reviwer-info
-            cite.reviews__item-name Васса Железнововнеева
-            p.reviews__item-function директор
-            p.reviews__item-company ЦКиЗ “Никто не заметит”
-        blockquote.reviews__item-text
-          | Не следует, однако забывать, что постоянный количественный рост и сфера нашей активности позволяет выполнять важные задания по разработке новых предложений.
-          | С другой стороны начало повседневной работы по формированию позиции позволяет оценить значение новых предложений.
-          | Идейные соображения высшего порядка, а также рамки и место обучения кадров требуют определения и уточнения систем массового участия.
-          | Разнообразный и богатый опыт укрепление и развитие структуры влечет за собой процесс внедрения и модернизации системы обучения кадров, соответствует насущным потребностям.
-          | Задача организации, в особенности же сложившаяся структура организации позволяет оценить значение позиций, занимаемых участниками в отношении поставленных задач.
-          | Таким образом сложившаяся структура организации влечет за собой процесс внедрения и модернизации форм развития.
+    .container
+      h2.reviews__title.section-title Отзывы
+      ul.reviews__list
+        li.reviews__list-item.review-dialog
+          .review-dialog__speech
+            cite.review-dialog__speech-author Иван Матвейчук
+            blockquote.review-dialog__speech-text Куча интерактива, живая подача, небольшое шоу - Леша хорошо удерживает внимание и даёт не просто информацию, а разрабатывает (насколько это возможно за это время) именно скилл.
+          img.review-dialog__photo(src='img/', width='', height='', alt='')
+        li.reviews__list-item.review-dialog
+          .review-dialog__speech
+            cite.review-dialog__speech-author Сергей Конев
+            blockquote.review-dialog__speech-text Дизайнеру важно уметь общаться с клиентами: искать боли, находить настоящую мотивацию, чтобы придумывать гипотезы и внедрять их, или создавать новые продукты. Чтобы этому научиться, я пошел на курс по Сustomer Development. Курс состоит из 4 занятий. На каждом занятии мы проходили теорию и сразу же закрепляли её на практике, и, конечно же, получали объемную домашку. По итогу курса у меня стала формироваться картина о том, что делать дальше.
+          img.review-dialog__photo(src='img/', width='', height='', alt='')
+        li.reviews__list-item.review-dialog
+          .review-dialog__speech
+            cite.review-dialog__speech-author Екатерина Cиванова
+            blockquote.review-dialog__speech-text Custdev это про обратную связь и выход из зоны комфорта, а этого никто не любит. Куда приятнее уютно пилить фичи. Леша рассказал кучу всяких хаков того, как делать custdev постоянно, не тратя на это уйму сил. Советую
+          img.review-dialog__photo(src='img/', width='', height='', alt='')
+      .reviews__sticker.sticker.sticker--shadow.sticker--background(data-icon='img/icon-.png')
+        p.sticker__text Рассказ о курсе  от дизайнера  market.ru
+        a.sticker__link(href='#') Читать
 
-  section.map
-    h2.map__title.section-title Наше местоположение
+  section.gallery
+    h2.gallery__title.section-title Как проходили прошлые потоки
+    //- С помощью fancybox
+    .gallery__list
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
+      a.gallery__list-item(href='img/[name].jpg', data-fancybox='past-flows', data-caption='Фото с предыдущих потоков')
+        img(src='img/[name].jpg', width='', height='', alt='Фото с предыдущих потоков')
 
-    .map__container
-      .map__block#map
+  section.price
+    .container
+      h2.price__title.section-title Стоимость для компаний
+      ul.price__list
+        li.price__list-item.card.card--background.card--shadow
+          strong.card__lead.card__lead--big 32 900 ₽
+          span.card__explanation 1 сотрудник
+          a.card__btn.btn.btn--rounded.btn--mint(href='#') Оформить
+        li.price__list-item.card.card--background.card--shadow
+          strong.card__lead.card__lead--big 29 900 ₽ / чел
+          span.card__explanation 2 сотрудника
+          a.card__btn.btn.btn--rounded.btn--mint(href='#') Оформить
+        li.price__list-item.card.card--background.card--shadow.card--sticker(data-mark='Выгодно')
+          strong.card__lead.card__lead--big 26 900 ₽ / чел
+          span.card__explanation 5+ сотрудников
+          a.card__btn.btn.btn--rounded.btn--mint(href='#') Оформить
+        li.price__list-item.card.card--background.card--shadow.card--long
+          strong.card__lead.card__lead--big 25 900 ₽
+          span.card__explanation Тариф “Для себя”
+          a.card__btn.btn.btn--rounded.btn--mint(href='#') Оформить
+
+  section.price-explanation
+    .container
+      h2.price-explanation__title.section-title В стоимость входит
+      ul.price-explanation__list
+        li.price-explanation__list-item.card.card--background.card--icon(data-icon='img/icon-.png')
+          strong.card__lead 3 методички
+          p.card__text методичка по проведению Customer Development и по настройке процессов проверки гипотез
+        li.price-explanation__list-item.card.card--background.card--icon(data-icon='img/icon-.png')
+          strong.card__lead 3 месяца подписки
+          p.card__text можно прочитать книгу (бумажный тираж закончился)
+        li.price-explanation__list-item.card.card--background
+          .card__video
+            iframe(src='https://www.youtube.com/embed/Y421bWMelqE', width='', height='', frameborder='0', allowfullscreen)
+          strong.card__lead Видеозапись курса
+        li.price-explanation__list-item.card.card--background.card--icon-top(data-icon='img/icon-.png')
+          strong.card__lead Бессмертный чат
+          p.card__text Вы познакомитесь с большим количеством интересных продактов и сможете общаться и после курса, общий чат в Telegram останется с вами надолго
+
+  section.entry-form
+    .container
+      h2.visually-hidden Форма записи на курс
+      form.entry-form__form.form(method='', action='')
+        .form__wrapper
+          label.visually-hidden(for='person-name') Имя
+          input.form__field#person-name(type='text', name='person-name', placeholder='Имя')
+          label.visually-hidden(for='person-tel') Телефон
+          input.form__field#person-tel(type='tel', name='person-tel', placeholder='Телефон')
+          label.visually-hidden(for='person-email') E-mail
+          input.form__field#person-email(type='email', name='person-email', placeholder='E-mail')
+          button.from__submit.btn.btn--rounded.btn--mint(type='submit') Записаться на курс
 
 block footer
-  +footer(pagesList, 1)
-
+  footer.page-footer
+    .page-footer__cities
+      .container
+        ul.page-footer__cities-navigation-list.navigation-list.navigation-list--dropdown
+          li.navigation-list__item.navigation-list__item--caps.navigation-list__item--current.navigation-list__item--current-white
+            a.navigation-list__link Санкт-Петербург
+          li.navigation-list__item.navigation-list__item--caps
+            a.navigation-list__link(href='#') Москва
+          li.navigation-list__item.navigation-list__item--caps
+            a.navigation-list__link(href='#') Минск
+        a.cities__navigation-entry.btn.btn--rounded.btn--white(href='#') Запись на курс
+    .page-footer__service
+      .container
+        p.page-footer__service-copyright Copyright © 2018 All rights reserved
+        ul.page-footer__service-documents.navigation-list
+          li.navigation-list__item
+            a.navigation-list__link Договор-оферта
+          li.navigation-list__item
+            a.navigation-list__link Политика конфиденциальности
 
 block page-bottom
-  script(src='https://api-maps.yandex.ru/2.1/?lang=ru_RU')
   script(src='js/script.min.js')
